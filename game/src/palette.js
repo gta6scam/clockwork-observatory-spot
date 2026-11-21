@@ -1,0 +1,77 @@
+// palette.js — the three lights of the observatory, one per round.
+//
+// Round 1 is lit by evening: warm amber walls and a deep blue slit of sky.
+// Round 2 is midnight: cooler walls, a darker sky, a brighter moon.
+// Round 3 is the eclipse: the whole room dims toward ember red, the moon in
+// the slit goes dark and grows a corona, and only the candles keep their
+// warm colour. The painters read every colour from the phase object, so a
+// round is re-lit by swapping one value, never by repainting code.
+
+export const PHASES = {
+  evening: {
+    name: 'Evening',
+    wall: '#4b3421',
+    wallShade: '#3a2716',
+    dome: '#2e2013',
+    domeRib: '#5d422a',
+    floor: '#3d2a17',
+    floorLine: '#2a1c0e',
+    skyTop: '#26355e',
+    skyBottom: '#0d1330',
+    moon: '#f4ead0',
+    moonShade: '#d9c9a3',
+    brass: '#c9973f',
+    brassDark: '#8a6420',
+    copper: '#b0662f',
+    paper: '#e8d9ae',
+    paperShade: '#cbb582',
+    ink: '#2b2013',
+    glow: 'rgba(255,176,84,0.55)',
+    ambient: 'rgba(255,166,66,0.10)',
+    star: '#dfe8ff',
+  },
+  midnight: {
+    name: 'Midnight',
+    wall: '#333a52',
+    wallShade: '#272d42',
+    dome: '#1d2338',
+    domeRib: '#414c6e',
+    floor: '#262c40',
+    floorLine: '#171c2b',
+    skyTop: '#101a3d',
+    skyBottom: '#04061a',
+    moon: '#f7f3e2',
+    moonShade: '#d5d9c9',
+    brass: '#c9973f',
+    brassDark: '#8a6420',
+    copper: '#b0662f',
+    paper: '#e6ddba',
+    paperShade: '#c6bb92',
+    ink: '#232030',
+    glow: 'rgba(255,176,84,0.5)',
+    ambient: 'rgba(120,150,255,0.08)',
+    star: '#eaf0ff',
+  },
+  eclipse: {
+    name: 'Eclipse',
+    wall: '#3a2530',
+    wallShade: '#2c1b23',
+    dome: '#241419',
+    domeRib: '#503140',
+    floor: '#2b1a20',
+    floorLine: '#1c1015',
+    skyTop: '#170a24',
+    skyBottom: '#05030e',
+    moon: '#0b0b12',
+    moonShade: '#000000',
+    brass: '#bd8c38',
+    brassDark: '#7d5a1e',
+    copper: '#a55a2a',
+    paper: '#ddcda2',
+    paperShade: '#bfa87c',
+    ink: '#2b1a16',
+    glow: 'rgba(255,150,60,0.6)',
+    ambient: 'rgba(255,90,60,0.07)',
+    star: '#cfd6ff',
+  },
+};
