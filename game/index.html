@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Clockwork Observatory — a spot-the-difference game</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hud">
+    <div class="brand">
+      <span class="brand-name">The Clockwork Observatory</span>
+      <span id="round-label" class="round-label">Round 1 — Evening</span>
+    </div>
+    <div class="timer" aria-label="Time remaining">
+      <span id="timer-text" class="timer-text">4:00</span>
+      <div class="timer-track"><div id="timer-bar" class="timer-bar"></div></div>
+    </div>
+    <div id="left-count" class="left-count">12 TO FIND</div>
+    <div id="found-count" class="found-count">0 FOUND</div>
+    <div class="hud-right">
+      <span id="score" class="score">Score 0</span>
+      <button id="btn-hint" class="hud-btn">Hint <span id="hints-left">Hints 3</span></button>
+      <button id="btn-pause" class="hud-btn">Pause</button>
+      <button id="btn-mute" class="hud-btn">Sound: on</button>
+    </div>
+  </header>
+
+  <main class="stage">
+    <figure class="panel-wrap">
+      <canvas id="panel-left" width="600" height="640"></canvas>
+      <figcaption>The observatory, as it truly is</figcaption>
+    </figure>
+    <figure class="panel-wrap">
+      <canvas id="panel-right" width="600" height="640"></canvas>
+      <figcaption>The observatory, as the meddler left it</figcaption>
+    </figure>
+    <div id="overlay" class="overlay"></div>
+  </main>
+
+  <footer class="help">
+    Click a difference on either panel &nbsp;·&nbsp; Arrows / WASD move the lens, Enter checks it
+    &nbsp;·&nbsp; H hint &nbsp;·&nbsp; P pause &nbsp;·&nbsp; M sound &nbsp;·&nbsp; A misclick costs 5 seconds
+  </footer>
+
+  <script src="vendor/three.min.js"></script>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

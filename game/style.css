@@ -1,0 +1,207 @@
+/* The Clockwork Observatory — page styling.
+   Brass, dark wood and lamplight: the page is the observatory's desk, the
+   two panels hang on it in brass frames, and the head-up display is a row
+   of engraved plaques. System fonts only, so the game plays fully offline. */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #14100b radial-gradient(1200px 500px at 50% -80px, #2a1e10, #14100b);
+  color: #ecdfbe;
+  font-family: Georgia, 'Times New Roman', serif;
+  min-height: 100vh;
+}
+
+/* ——— The head-up display ——— */
+
+.hud {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 18px 8px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.brand { display: flex; flex-direction: column; min-width: 218px; }
+.brand-name {
+  font-size: 17px;
+  letter-spacing: 0.06em;
+  color: #e9c46a;
+  text-transform: uppercase;
+}
+.round-label { font-size: 12.5px; color: #b8a67e; font-style: italic; }
+
+.timer { display: flex; align-items: center; gap: 10px; flex: 1; max-width: 300px; }
+.timer-text {
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+  color: #f4e9c8;
+  min-width: 58px;
+  text-align: right;
+}
+.timer-text.danger { color: #ff6a5e; }
+.timer-track {
+  flex: 1;
+  height: 10px;
+  background: #241a0e;
+  border: 1px solid #8a6420;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.timer-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #c9973f, #e9c46a);
+  transition: width 0.25s linear;
+}
+.timer-bar.danger { background: linear-gradient(90deg, #a11f16, #ff5348); }
+
+.left-count {
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  color: #14100b;
+  background: linear-gradient(180deg, #e9c46a, #c9973f);
+  border: 1px solid #6e4f16;
+  border-radius: 6px;
+  padding: 6px 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.45);
+  white-space: nowrap;
+}
+
+.found-count {
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  color: #e9c46a;
+  background: linear-gradient(180deg, #4a3420, #33270f);
+  border: 1px solid #8a6420;
+  border-radius: 6px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+.hud-right { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.score { font-size: 16px; color: #f4e9c8; min-width: 86px; text-align: right; }
+.hud-btn {
+  font-family: inherit;
+  font-size: 13.5px;
+  color: #ecdfbe;
+  background: linear-gradient(180deg, #4a3420, #33270f);
+  border: 1px solid #8a6420;
+  border-radius: 6px;
+  padding: 6px 11px;
+  cursor: pointer;
+}
+.hud-btn:hover:not(:disabled) { border-color: #e9c46a; color: #ffe9a8; }
+.hud-btn:disabled { opacity: 0.45; cursor: default; }
+.hud-btn span { color: #e9c46a; }
+
+/* ——— The two panels ——— */
+
+.stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  padding: 2px 12px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.panel-wrap { margin: 0; text-align: center; }
+.panel-wrap canvas {
+  width: 600px;
+  height: 640px;
+  display: block;
+  background: #1c1410;
+  border: 6px solid #6e4f16;
+  outline: 2px solid #c9973f;
+  border-radius: 4px;
+  box-shadow: 0 10px 34px rgba(0,0,0,0.65), inset 0 0 0 2px rgba(0,0,0,0.6);
+  cursor: crosshair;
+}
+.panel-wrap figcaption {
+  margin-top: 6px;
+  font-size: 13px;
+  font-style: italic;
+  color: #b8a67e;
+  letter-spacing: 0.04em;
+}
+
+.help {
+  text-align: center;
+  font-size: 13px;
+  color: #9a8a64;
+  padding: 8px 12px 14px;
+}
+
+/* ——— Overlay screens ——— */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 7, 4, 0.55);
+  z-index: 5;
+}
+.overlay.visible { display: flex; }
+.overlay .card {
+  max-width: 560px;
+  text-align: center;
+  background: linear-gradient(180deg, #2c2010, #1d1409);
+  border: 2px solid #c9973f;
+  outline: 1px solid #6e4f16;
+  border-radius: 10px;
+  padding: 28px 36px 30px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.8);
+}
+.overlay .kicker {
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c9973f;
+}
+.overlay h1 {
+  margin: 0 0 12px;
+  font-size: 40px;
+  line-height: 1.08;
+  color: #f4e9c8;
+  font-weight: normal;
+}
+.overlay h2 { margin: 0 0 10px; font-size: 25px; color: #f4e9c8; font-weight: normal; }
+.overlay .story, .overlay .how {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #d9c9a3;
+}
+.overlay button.big {
+  font-family: inherit;
+  font-size: 17px;
+  color: #14100b;
+  background: linear-gradient(180deg, #e9c46a, #c9973f);
+  border: 1px solid #6e4f16;
+  border-radius: 7px;
+  padding: 10px 22px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+}
+.overlay button.big:hover { filter: brightness(1.08); }
+.overlay button.ghost {
+  display: block;
+  margin: 12px auto 0;
+  font-family: inherit;
+  font-size: 14px;
+  color: #b8a67e;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
